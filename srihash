@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -o pipefail
+
+resource="$1"
+
+die() {
+    message="$1"
+    (>&2 echo "$message")
+    exit 1
+}
+
+cmd=""
+
+if echo "$resource" | grep -E '^https?://' 2>&1 > /dev/null; then
+    if [ "`which wget`" != "" ]; then
+        cmd="wget -qO-"
+    elif [ "`which curl`" != "" ]; then
+        cmd="curl -sL"
+    else
+        die "unable to fetch remote resource. please install wget or curl"
+        exit 1
+    fi
+else
+    cmd="cat"
+fi
+
+if [ "$cmd" = "" ]; then
+    die "implementation error"
+fi
+
+hash=`$cmd "$resource" | openssl dgst -sha384 -binary | openssl enc -base64 -A` || die "failed to hash resource '$resource'"
+
+echo "sha384-$hash"
