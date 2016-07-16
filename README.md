@@ -27,4 +27,5 @@ You can then add the `integrity` attribute to your tags like so:
 Installation
 ============
 
-Copy the file `srihash` to your `bin` location of choice.
+Copy the file `srihash` to your `bin` location of choice. Requires the `bash`,
+`curl` or `wget`, and `opensl` commands to be installed.
