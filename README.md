@@ -4,7 +4,7 @@ srihash - generate Subresource Integrity Digests from the command line
 Subresource Integrity is a browser feature that allows you to specify the hash
 of a resource being loaded by your webpage. This allows you to more safely use
 CDN-distributed content. For more information, see
-(Subresource Integrity on MDN)[https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity].
+[Subresource Integrity on MDN](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
 
 Usage
 =====
